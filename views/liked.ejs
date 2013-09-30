@@ -1,0 +1,94 @@
+<section id="home">
+  <h1>Hola</h1>
+
+  <% if (recommendedImage) { %>
+    <a id="foto-recomendada-lighbox" href="#foto-recomendada" class="hide"></a>
+    <div id="foto-recomendada" class="hide">
+      <div class="foto-container">
+        <%- image_crop(recommendedImage.image, 400, 400) %>
+        <div class="share">
+          <% if (userId && !recommendedImage.voted) { %>
+            <a data-id="<%= recommendedImage.id%>" href="javascript: vote('<%= recommendedImage.id%>')" class="votar">
+              <img src="/images/vota.png" alt="Votá" />
+            </a>
+          <% } %>
+          <a data-id="<%= recommendedImage.id%>" href="javascript: share('recomendada', '<%= recommendedImage.id%>')" class="compartir"><img src="/images/compartir.png" alt="Compartir" /></a>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</section>
+
+<section id="subi-tu-foto-1">
+  <h1>Subí tu foto</h1>
+  <a href="#" id="cmdUpload" title="Hac&eacute; click ac&aacute; y sub&iacute; la foto">
+    Hac&eacute; click ac&aacute; y sub&iacute; la foto
+  </a>
+</section>
+
+<section id="subi-tu-foto-2">
+  <h1>Subí tu foto</h1>
+  <form id="upload-foto" action="upload" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="userId" value="<%= userId %>">
+    <p>
+      <input type="text" name="nombre" value=""/>
+    </p>
+    <p>
+      <input type="text" name="apellido"/>
+    </p>
+    <p>
+      <input type="text" name="ciudad"/>
+    </p>
+    <p>
+      <input type="text" name="mail"/>
+    </p>
+    <p>
+      <input type="file" name="image"/>
+    </p>
+    <input type="submit" value="subir" />
+  </form>
+</section>
+
+<section id="mira-las-fotos">
+  <h1>MIrá las fotos</h1>
+
+  <div id="fotos-container">
+    <%- include images.ejs %>
+  </div>
+  <ul id="paginador">
+    <li>
+      <a href="#" class="prev"><img src="/images/left-off.png"/></a>
+    </li>
+    <li>1 de <%=images.pagesCount%></li>
+    <li>
+      <a href="#" class="next" data-count="<%=images.pagesCount%>"><img src="/images/right-off.png"/></a>
+    </li>
+  </ul>
+</section>
+
+<section id="mecanica">
+  <h1>Mecánica</h1>
+</section>
+
+<section id="premios">
+  <h1>Premios</h1>
+</section>
+
+<section id="bases">
+  <h1>Bases</h1>
+</section>
+
+<footer>
+  <ul>
+    <li><a href="#" id="cmdSubiTuFoto">Sub&iacute; tu foto</a></li>
+    <li><a href="#" id="cmdMiraLasFotos">Mirá las fotos"</a></li>
+    <li><a href="#" id="cmdMecanica">Mec&aacute;nica"</a></li>
+    <li><a href="#" id="cmdPremios">Premios"</a></li>
+    <li><a href="#" id="cmdBases">Bases"</a></li>
+  </ul>
+</footer>
+
+<script type="text/javascript" src="/scripts/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/scripts/additional-methods.min.js"></script>
+<script type="text/javascript" src="/scripts/messages_es.js"></script>
+<script type="text/javascript" src="/scripts/index.js"></script>

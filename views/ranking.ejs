@@ -1,0 +1,24 @@
+<%- contentFor('body') %>
+<table class="table">
+	<thead>
+		<tr>
+		  <th>Foto</th>
+		  <th>Cantidad de votos</th>
+		  <th>Nombre</th>
+		  <th>Apellido</th>
+		  <th>Ciudad</th>
+		  <th>Email</th>
+		</tr>
+	</thead>
+  	<% works.forEach(function(work, index) { %>
+  	<tr>
+	  <td><%- image_crop(work.cloudImage.public_id + "." + work.cloudImage.format, 100, 100) %></td>
+	  <td><%= work.votesCount %></td>
+	  <td><%= work.user.name %></td>
+	  <td><%= work.user.lastname %></td>
+	  <td><%= work.user.city %></td>
+	  <td><%= work.user.mail %></td>
+	</tr>
+  	<%})%>
+</table>
+<%- contentFor('script') %>

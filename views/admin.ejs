@@ -1,0 +1,51 @@
+<%- contentFor('body') %>
+<ul class="nav nav-tabs">
+  <li <% if (status == "pending") { %>class="active"<% } %>><a href="?status=pending">Pendientes</a></li>
+  <li <% if (status == "approved") { %>class="active"<% } %>><a href="?status=approved">Aprobados</a></li>
+  <li <% if (status == "rejected") { %>class="active"<% } %>><a href="?status=rejected">Rechazados</a></li>
+</ul>
+<p></p>
+<form method="post" action="approve">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Foto</th>
+        <th>Fecha</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Ciudad</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <% works.forEach(function(work, index) { %>
+      <tr>
+        <td><input type="checkbox" name="works" value="<%=work._id%>"></td>
+        <td>
+          <a class="iniline" href="#<%=work._id%>">
+            <%- image_crop(work.cloudImage.public_id + "." + work.cloudImage.format, 100, 100) %>
+          </a>
+          <div style="display:none">
+            <div id="<%=work._id%>"><%- image_crop(work.cloudImage.public_id + "." + work.cloudImage.format, 500, 500) %></div>
+          </div>
+        </td>
+        <td><%= prettyDate(work.createdAt) %></td>
+        <td><%= work.user.name %></td>
+        <td><%= work.user.lastname %></td>
+        <td><%= work.user.city %></td>
+        <td><%= work.user.mail %></td>
+      </tr>
+    <%})%>
+  </table>
+
+  <% if (status != "approved") { %>
+    <input type="submit" id="cmdApprove" value="aprobar" />
+  <% } %>
+  <% if (status != "rejected") { %>
+    <input type="submit" id="reject" value="rechazar" />
+  <% } %>
+  <input type="hidden" name="status" value="<%= status %>" />
+
+</form>
+<%- contentFor('script') %>
+<script type="text/javascript" src="/scripts/admin.js"></script>

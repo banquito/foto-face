@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenés Bic - Administración</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" media="Screen" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/admin.css" />
+    <link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/admin/">Tenés Bic</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li <% if (action == "index") { %>class="active"<% } %>><a href="/admin/">Moderar Fotos</a></li>
+            <li <% if (action == "ranking") { %>class="active"<% } %>><a href="/admin/ranking">Ranking</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <%- body %>
+    </div><!-- /.container -->
+    <script type="text/javascript" src="/scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/fancybox/jquery.fancybox.js?v=2.1.5"></script>
+    <%- script %>
+  </body>
+</html>
