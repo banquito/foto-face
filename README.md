@@ -20,3 +20,10 @@ Tecnologías
 * express js
 * mongodb
 * cloudinary
+* heroku
+
+Empezar
+--------
+git clone ...
+cd foto-face
+foreman start
