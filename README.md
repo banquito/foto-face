@@ -25,6 +25,6 @@ Tecnologías
 
 Así se empieza
 --------
-git clone ...  
-cd foto-face  
-foreman start  
+	$ git clone ...  
+	$ cd foto-face  
+	$ foreman start  
