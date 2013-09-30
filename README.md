@@ -2,6 +2,7 @@ foto-face
 =========
 
 Es una aplicación tipo concurso de fotos para facebook.
+Hecha en node.js + express + mongodb, lista para subir a heroku.
 
 Historias
 --------
