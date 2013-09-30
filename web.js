@@ -83,7 +83,7 @@ var express = require('express');
 var basicAuth = express.basicAuth;
 var auth = function(req, res, next) {
   basicAuth(function(user, pass, callback) {
-    callback(null, user === 'bic' && pass === '1234');
+    callback(null, user === 'admin' && pass === '1234');
   })(req, res, next);
 };
 
